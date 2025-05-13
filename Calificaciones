@@ -1,47 +1,43 @@
 import tkinter as tk
 
-def calcular_promedio():
+def calcular_area():
     try:
-        cal1 = float(entrada_materia1.get())
-        cal2 = float(entrada_materia2.get())
-        cal3 = float(entrada_materia3.get())
+        base = float(entrada_base.get())
+        altura = float(entrada_altura.get())
 
-        promedio = (cal1 + cal2 + cal3) / 3
 
-        if promedio >= 6:
-            resultado = f"Tu promedio es {promedio:.2f}. ¡Aprobaste! :)"
+        area = (base * altura) / 2
+
+        if area >= 100:
+            resultado = f"El area es {area:.2f}.  ¡Por lo tanto tu area es grande! "
         else:
-            resultado = f"Tu promedio es {promedio:.2f}. Reprobaste :("
+            resultado = f"El area es {area:.2f}.  Por lo tanto tu area es pequeña"
 
         etiqueta_resultado.config(text=resultado)
 
+
     except ValueError:
-        etiqueta_resultado.config(text="Ingresa calificaciones válidas (números)")
+        etiqueta_resultado.config(text="Ingresa la base y la altura (números)")
 
 ventana = tk.Tk()
-ventana.title("Calculadora de Promedio")
+ventana.title("Calculadora del Area del Triangulo")
 ventana.geometry("500x400")
 ventana.config(bg="plum") 
 
-etiqueta_titulo = tk.Label(ventana, text="Ingresa tus calificaciones:", bg="plum", font=("Arial", 14))
+etiqueta_titulo = tk.Label(ventana, text="Ingresa las cantidades:", bg="plum", font=("Arial", 14))
 etiqueta_titulo.pack(pady=10)
 
-etiqueta1 = tk.Label(ventana, text="Materia 1:", bg="plum")
+etiqueta1 = tk.Label(ventana, text="Base", bg="plum")
 etiqueta1.pack()
-entrada_materia1 = tk.Entry(ventana)
-entrada_materia1.pack()
+entrada_base = tk.Entry(ventana)
+entrada_base.pack()
 
-etiqueta2 = tk.Label(ventana, text="Materia 2:", bg="plum")
+etiqueta2 = tk.Label(ventana, text="Altura", bg="plum")
 etiqueta2.pack()
-entrada_materia2 = tk.Entry(ventana)
-entrada_materia2.pack()
+entrada_altura= tk.Entry(ventana)
+entrada_altura.pack()
 
-etiqueta3 = tk.Label(ventana, text="Materia 3:", bg="plum")
-etiqueta3.pack()
-entrada_materia3 = tk.Entry(ventana)
-entrada_materia3.pack()
-
-boton_calcular = tk.Button(ventana, text="Calcular Promedio", command=calcular_promedio, bg="lightgreen", width=25)
+boton_calcular = tk.Button(ventana, text="Calcular Promedio", command=calcular_area, bg="lightgreen", width=25)
 boton_calcular.pack(pady=20)
 
 etiqueta_resultado = tk.Label(ventana, text="", bg="plum", font=("Arial", 12))
