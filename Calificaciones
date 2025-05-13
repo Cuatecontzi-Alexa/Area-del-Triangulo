@@ -1,0 +1,50 @@
+import tkinter as tk
+
+def calcular_promedio():
+    try:
+        cal1 = float(entrada_materia1.get())
+        cal2 = float(entrada_materia2.get())
+        cal3 = float(entrada_materia3.get())
+
+        promedio = (cal1 + cal2 + cal3) / 3
+
+        if promedio >= 6:
+            resultado = f"Tu promedio es {promedio:.2f}. ¡Aprobaste! :)"
+        else:
+            resultado = f"Tu promedio es {promedio:.2f}. Reprobaste :("
+
+        etiqueta_resultado.config(text=resultado)
+
+    except ValueError:
+        etiqueta_resultado.config(text="Ingresa calificaciones válidas (números)")
+
+ventana = tk.Tk()
+ventana.title("Calculadora de Promedio")
+ventana.geometry("500x400")
+ventana.config(bg="plum") 
+
+etiqueta_titulo = tk.Label(ventana, text="Ingresa tus calificaciones:", bg="plum", font=("Arial", 14))
+etiqueta_titulo.pack(pady=10)
+
+etiqueta1 = tk.Label(ventana, text="Materia 1:", bg="plum")
+etiqueta1.pack()
+entrada_materia1 = tk.Entry(ventana)
+entrada_materia1.pack()
+
+etiqueta2 = tk.Label(ventana, text="Materia 2:", bg="plum")
+etiqueta2.pack()
+entrada_materia2 = tk.Entry(ventana)
+entrada_materia2.pack()
+
+etiqueta3 = tk.Label(ventana, text="Materia 3:", bg="plum")
+etiqueta3.pack()
+entrada_materia3 = tk.Entry(ventana)
+entrada_materia3.pack()
+
+boton_calcular = tk.Button(ventana, text="Calcular Promedio", command=calcular_promedio, bg="lightgreen", width=25)
+boton_calcular.pack(pady=20)
+
+etiqueta_resultado = tk.Label(ventana, text="", bg="plum", font=("Arial", 12))
+etiqueta_resultado.pack(pady=10)
+
+ventana.mainloop()
